@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
 import sortUtils from "../../utils/sortRestaurant";
 import RestaurantCard from "../../components/fragments/RestaurantCard";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const sortList = ["Rating", "City", "Name"];
 
@@ -68,14 +69,26 @@ const Home = () => {
           </li>
         ))}
       </ul>
-      <div className="flex justify-end sm:hidden mt-5">
+      <div className="flex justify-center sm:hidden mt-5">
         <SearchInput className="md:hidden" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
-        {data &&
+        {isLoading ? (
+          <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
+            {Array(8)
+              .fill(0)
+              .map((_, i) => (
+                <RestaurantCard skeleton={isLoading} key={i} />
+              ))}
+          </SkeletonTheme>
+        ) : error ? (
+          <p className="text-white font-bold text-3xl">{error}</p>
+        ) : (
+          data &&
           sortUtils[sort](data.restaurants).map((restaurant) => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-          ))}
+            <RestaurantCard restaurant={restaurant} key={restaurant.id} />
+          ))
+        )}
       </div>
     </main>
   );
