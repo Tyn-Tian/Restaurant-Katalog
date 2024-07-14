@@ -72,7 +72,7 @@ const Home = () => {
       <div className="flex justify-center sm:hidden mt-5">
         <SearchInput className="md:hidden" />
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1  xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
         {isLoading ? (
           <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
             {Array(8)
