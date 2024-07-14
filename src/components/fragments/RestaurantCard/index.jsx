@@ -1,5 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import LazyImage from "../../elements/LazyImage";
 
 const RestaurantCard = ({ restaurant, skeleton }) => {
   return (
@@ -7,7 +8,7 @@ const RestaurantCard = ({ restaurant, skeleton }) => {
       {skeleton ? (
         <Skeleton className="h-28 sm:h-36 md:h-44" />
       ) : (
-        <img
+        <LazyImage
           className="rounded-sm md:rounded-md"
           src={`https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}`}
           alt="Restaurant Picture"

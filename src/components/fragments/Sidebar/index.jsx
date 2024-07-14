@@ -27,7 +27,8 @@ const Sidebar = () => {
         "sm:py-5",
         "fixed",
         "bottom-0 sm:left-0",
-        "rounded-t-xl  sm:rounded-r-xl"
+        "rounded-t-xl  sm:rounded-r-xl",
+        "z-50"
       )}
     >
       <ul
