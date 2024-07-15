@@ -7,6 +7,7 @@ import sortUtils from "../../utils/sortRestaurant";
 import RestaurantCard from "../../components/fragments/RestaurantCard";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
+import BackTopButton from "../../components/elements/BackTopButton";
 
 const sortList = ["Rating", "City", "Name"];
 
@@ -31,6 +32,7 @@ const Home = () => {
 
   return (
     <main className="p-5 mb-24 sm:ml-24 sm:mb-0">
+      <BackTopButton />
       <div
         className={cn(
           "flex",
