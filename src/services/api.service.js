@@ -5,11 +5,11 @@ const sendRequest = async (url, options = null) => {
   return await response.json();
 };
 
-const get = async () => {
+const getAll = async () => {
   return await sendRequest(`${BASE_URL}/list`);
 };
 
-const getAll = async (id) => {
+const get = async (id) => {
   return await sendRequest(`${BASE_URL}/detail/${id}`);
 };
 
@@ -31,4 +31,4 @@ const addReview = async (id, name, review) => {
   });
 };
 
-export default { get, getAll, search, addReview };
+export default { getAll, get, search, addReview };

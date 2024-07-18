@@ -12,7 +12,7 @@ import BackTopButton from "../../components/elements/BackTopButton";
 const sortList = ["Rating", "City", "Name"];
 
 const Home = () => {
-  const { data, isLoading, error } = useFetch(apiService.get);
+  const { data, isLoading, error } = useFetch(apiService.getAll);
   const [sort, setSort] = useState("sortByRating");
   const [active, setActive] = useState("Rating");
   const navigate = useNavigate();
@@ -32,7 +32,6 @@ const Home = () => {
 
   return (
     <main className="p-5 mb-24 sm:ml-24 sm:mb-0">
-      <BackTopButton />
       <div
         className={cn(
           "flex",
@@ -100,6 +99,7 @@ const Home = () => {
           ))
         )}
       </div>
+      <BackTopButton />
     </main>
   );
 };
