@@ -3,11 +3,13 @@ import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
 import RestaurantDetail from "../../components/fragments/RestaurantDetail";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { useCallback } from "react";
 
 const DetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data, isLoading, error } = useFetch(() => apiService.get(id));
+  const api = useCallback(() => apiService.get(id), [id]);
+  const { data, isLoading, error } = useFetch(api);
 
   return (
     <main className="p-3 mb-20 sm:ml-20 sm:mb-0">
