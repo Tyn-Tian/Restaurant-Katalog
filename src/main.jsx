@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/layouts/Layout";
-import Home from "./pages/Home";
-import RestaurantDetail from "./pages/RestaurantDetail";
+import HomePage from "./pages/HomePage";
+import DetailPage from "./pages/DetailPage";
 
 const router = createBrowserRouter([
   {
@@ -13,11 +13,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: "/detail/:id",
-        element: <RestaurantDetail />,
+        element: <DetailPage />,
       },
     ],
   },

@@ -4,7 +4,7 @@ import apiService from "../../services/api.service";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
-const RestaurantDetail = () => {
+const DetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data, isLoading, error } = useFetch(() => apiService.get(id));
@@ -44,4 +44,4 @@ const RestaurantDetail = () => {
   );
 };
 
-export default RestaurantDetail;
+export default DetailPage;

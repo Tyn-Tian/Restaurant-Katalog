@@ -11,7 +11,7 @@ import BackTopButton from "../../components/elements/BackTopButton";
 
 const sortList = ["Rating", "City", "Name"];
 
-const Home = () => {
+const HomePage = () => {
   const { data, isLoading, error } = useFetch(apiService.getAll);
   const [sort, setSort] = useState("sortByRating");
   const [active, setActive] = useState("Rating");
@@ -104,4 +104,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
