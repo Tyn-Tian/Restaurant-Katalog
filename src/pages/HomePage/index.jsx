@@ -31,7 +31,7 @@ const HomePage = () => {
   const cardClickHandle = (id) => navigate(`/detail/${id}`);
 
   return (
-    <main className="p-5 mb-24 sm:ml-24 sm:mb-0">
+    <main className="p-3 mb-20 sm:ml-20 sm:mb-0">
       <div
         className={cn(
           "flex",
