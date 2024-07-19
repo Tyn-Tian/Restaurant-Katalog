@@ -4,6 +4,7 @@ import apiService from "../../services/api.service";
 import RestaurantDetail from "../../components/fragments/RestaurantDetail";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useCallback } from "react";
+import BackTopButton from "../../components/elements/BackTopButton";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const DetailPage = () => {
       ) : (
         navigate("/")
       )}
+      <BackTopButton />
     </main>
   );
 };
