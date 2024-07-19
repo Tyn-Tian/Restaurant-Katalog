@@ -3,6 +3,7 @@ import "@smastrom/react-rating/style.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import CategoryLabel from "../../elements/CategoryLabel";
+import Comment from "../../elements/Comment";
 
 const RestaurantDetail = ({ data, skeleton }) => {
   return (
@@ -39,7 +40,7 @@ const RestaurantDetail = ({ data, skeleton }) => {
         )}
         {skeleton ? (
           <div className="w-full">
-            <Skeleton width={100} className="text-2xl" />
+            <Skeleton width={150} className="text-2xl" />
             <Skeleton width={75} className="px-5 py-1 mt-2" />
             <div className="mt-5">
               <Skeleton count={5} className="text-lg" />
@@ -58,6 +59,20 @@ const RestaurantDetail = ({ data, skeleton }) => {
             </p>
           </div>
         )}
+      </div>
+      <div className="mt-5">
+        <h3 className="text-white text-2xl font-bold">
+          {skeleton ? <Skeleton width={150} /> : "Comments"}
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-3 gap-2">
+          {skeleton
+            ? Array(3)
+                .fill(0)
+                .map((_, i) => <Comment key={i} skeleton={skeleton} />)
+            : data.restaurant.customerReviews.map((comment, i) => (
+                <Comment key={i} data={comment} />
+              ))}
+        </div>
       </div>
     </div>
   );
