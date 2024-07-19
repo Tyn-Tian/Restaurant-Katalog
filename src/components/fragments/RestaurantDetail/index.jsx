@@ -2,6 +2,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import CategoryLabel from "../../elements/CategoryLabel";
 
 const RestaurantDetail = ({ data, skeleton }) => {
   return (
@@ -14,7 +15,7 @@ const RestaurantDetail = ({ data, skeleton }) => {
           {skeleton ? <Skeleton width={75} /> : data.restaurant.city}
         </p>
         {skeleton ? (
-          <Skeleton width={100} />
+          <Skeleton width={100} className="h-5" />
         ) : (
           <Rating
             className="max-w-28"
@@ -38,10 +39,24 @@ const RestaurantDetail = ({ data, skeleton }) => {
         )}
         {skeleton ? (
           <div className="w-full">
-            <Skeleton count={5} className="text-lg" />
+            <Skeleton width={100} className="text-2xl" />
+            <Skeleton width={75} className="px-5 py-1 mt-2" />
+            <div className="mt-5">
+              <Skeleton count={5} className="text-lg" />
+            </div>
           </div>
         ) : (
-          <p className="text-white text-lg">{data.restaurant.description}</p>
+          <div>
+            <h3 className="text-white text-2xl font-bold">Categories</h3>
+            <div className="flex mt-2 gap-3">
+              {data.restaurant.categories.map((item, i) => (
+                <CategoryLabel key={i} category={item.name} />
+              ))}
+            </div>
+            <p className="text-white text-lg mt-5">
+              {data.restaurant.description}
+            </p>
+          </div>
         )}
       </div>
     </div>
