@@ -4,7 +4,16 @@ const CommnetDialog = () => {
   return (
     <div className="my-5 border-t border-slate-700 pt-3 md:pt-5">
       <textarea
-        className="w-full rounded-md px-3 py-2 focus:outline-none active:outline-none h-24 placeholder:text-white bg-transparent border border-white text-white"
+        className={cn(
+          "w-full h-24 lg:h-32",
+          "rounded-md",
+          "px-3 py-2",
+          "bg-transparent",
+          "border border-white focus:border-red-400",
+          "text-white",
+          "focus:outline-none active:outline-none",
+          "placeholder:text-white"
+        )}
         placeholder="Write your comment here..."
       ></textarea>
       <button
