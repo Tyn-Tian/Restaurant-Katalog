@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import CategoryLabel from "../../elements/CategoryLabel";
 import Comment from "../../elements/Comment";
+import CommentDialog from "../../elements/CommentDialog";
 
 const RestaurantDetail = ({ data, skeleton }) => {
   return (
@@ -73,6 +74,7 @@ const RestaurantDetail = ({ data, skeleton }) => {
                 <Comment key={i} data={comment} />
               ))}
         </div>
+        <CommentDialog />
       </div>
     </div>
   );
