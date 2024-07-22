@@ -1,13 +1,33 @@
+import { useState } from "react";
 import { cn } from "../../../utils";
 
 const CommnetDialog = () => {
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+
   return (
     <div className="my-5 border-t border-slate-700 pt-3 md:pt-5">
+      <input
+        className={cn(
+          "w-full h-10 lg:h-12",
+          "rounded-md",
+          "px-2 py-1",
+          "bg-transparent",
+          "border border-white focus:border-red-400",
+          "text-white",
+          "focus:outline-none active:outline-none",
+          "placeholder:text-white"
+        )}
+        placeholder="Write your name here..."
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
       <textarea
         className={cn(
           "w-full h-24 lg:h-32",
           "rounded-md",
-          "px-3 py-2",
+          "px-3 py-2 mt-2 lg:mt-3",
           "bg-transparent",
           "border border-white focus:border-red-400",
           "text-white",
@@ -15,6 +35,8 @@ const CommnetDialog = () => {
           "placeholder:text-white"
         )}
         placeholder="Write your comment here..."
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
       ></textarea>
       <button
         className={cn(

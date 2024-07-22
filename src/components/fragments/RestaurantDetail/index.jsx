@@ -5,8 +5,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import CategoryLabel from "../../elements/CategoryLabel";
 import Comment from "../../elements/Comment";
 import CommentDialog from "../../elements/CommentDialog";
+import { useParams } from "react-router-dom";
 
 const RestaurantDetail = ({ data, skeleton }) => {
+  const { id } = useParams();
+
   return (
     <div>
       <div>
@@ -74,7 +77,7 @@ const RestaurantDetail = ({ data, skeleton }) => {
                 <Comment key={i} data={comment} />
               ))}
         </div>
-        <CommentDialog />
+        <CommentDialog id={id} />
       </div>
     </div>
   );
