@@ -7,7 +7,7 @@ import Comment from "../../elements/Comment";
 import CommentDialog from "../../elements/CommentDialog";
 import { useParams } from "react-router-dom";
 
-const RestaurantDetail = ({ data, skeleton }) => {
+const RestaurantDetail = ({ data, skeleton, onCommentAdded }) => {
   const { id } = useParams();
 
   return (
@@ -77,7 +77,7 @@ const RestaurantDetail = ({ data, skeleton }) => {
                 <Comment key={i} data={comment} />
               ))}
         </div>
-        <CommentDialog id={id} />
+        <CommentDialog id={id} onCommentAdded={onCommentAdded} />
       </div>
     </div>
   );

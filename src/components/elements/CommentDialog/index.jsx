@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { cn } from "../../../utils";
+import apiService from "../../../services/api.service";
 
-const CommnetDialog = () => {
+const CommnetDialog = ({ id, onCommentAdded }) => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+
+  const handleClick = async () => {
+    await apiService.addReview(id, name, comment);
+    onCommentAdded();
+  }
 
   return (
     <div className="my-5 border-t border-slate-700 pt-3 md:pt-5">
@@ -48,6 +54,7 @@ const CommnetDialog = () => {
           "mt-2",
           "transition duration-500"
         )}
+        onClick={handleClick}
       >
         Comment
       </button>
