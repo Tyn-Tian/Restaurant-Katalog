@@ -17,7 +17,7 @@ const CommnetDialog = ({ id, onCommentAdded }) => {
         className={cn(
           "w-full h-10 lg:h-12",
           "rounded-md",
-          "px-2 py-1",
+          "px-3 py-1",
           "bg-transparent",
           "border border-white focus:border-red-400",
           "text-white",
