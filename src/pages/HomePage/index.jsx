@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SearchInput from "../../components/elements/SearchInput";
 import { cn } from "../../utils";
 import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
@@ -50,7 +49,6 @@ const HomePage = () => {
         <h1 className="text-white font-semibold text-2xl sm:text-3xl">
           Catalog Restaurant
         </h1>
-        <SearchInput className="hidden sm:block" />
       </div>
       <ul
         className={cn(
@@ -74,9 +72,6 @@ const HomePage = () => {
           </li>
         ))}
       </ul>
-      <div className="flex justify-center sm:hidden mt-5">
-        <SearchInput className="md:hidden" />
-      </div>
       <div className="grid grid-cols-1  xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
         {isLoading ? (
           <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
