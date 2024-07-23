@@ -62,7 +62,9 @@ const Sidebar = () => {
             onClick={() => setActive(item.id)}
           >
             {item.id === "github" ? (
-              <a href={item.to}>{item.icon}</a>
+              <a href={item.to} target="_blank">
+                {item.icon}
+              </a>
             ) : (
               <Link to={item.to}>{item.icon}</Link>
             )}
