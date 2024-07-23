@@ -31,7 +31,7 @@ const RestaurantDetail = ({ data, skeleton, onCommentAdded }) => {
       </div>
       <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 mt-5">
         {skeleton ? (
-          <div className="w-full lg:w-96">
+          <div className="w-full lg:w-[500px]">
             <Skeleton className="inline-block h-40 xs:h-52 sm:h-72 md:h-96 lg:h-52 aspect-auto" />
           </div>
         ) : (
@@ -77,7 +77,11 @@ const RestaurantDetail = ({ data, skeleton, onCommentAdded }) => {
                 <Comment key={i} data={comment} />
               ))}
         </div>
-        <CommentDialog id={id} onCommentAdded={onCommentAdded} />
+        {skeleton ? (
+          <CommentDialog skeleton={skeleton} />
+        ) : (
+          <CommentDialog id={id} onCommentAdded={onCommentAdded} />
+        )}
       </div>
     </div>
   );
