@@ -15,7 +15,7 @@ const SearchInput = ({ className }) => {
           "rounded-lg",
           "border border-slate-700",
           "placeholder:text-slate-400",
-          "focus:outline-none",
+          "focus:outline-none"
         )}
         type="search"
         placeholder="Search restaurant name..."

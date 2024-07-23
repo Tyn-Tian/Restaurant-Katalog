@@ -1,11 +1,18 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import LazyImage from "../../elements/LazyImage";
+import { cn } from "../../../utils/index";
 
 const RestaurantCard = ({ restaurant, skeleton, clickHandle }) => {
   return (
     <div
-      className="bg-slate-950 rounded-lg md:rounded-xl p-2 pb-3 border border-slate-800 cursor-pointer"
+      className={cn(
+        "bg-slate-950",
+        "rounded-lg md:rounded-xl",
+        "p-2 pb-3",
+        "border border-slate-800",
+        "cursor-pointer"
+      )}
       onClick={clickHandle}
     >
       {skeleton ? (
