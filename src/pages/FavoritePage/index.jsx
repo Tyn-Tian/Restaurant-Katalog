@@ -16,7 +16,7 @@ const FavoritePage = () => {
           Your Favorite Restaurant
         </h1>
       </div>
-      <div className="grid grid-cols-1  xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
         {isLoading ? (
           <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
             {Array(8)
@@ -27,8 +27,9 @@ const FavoritePage = () => {
           </SkeletonTheme>
         ) : error ? (
           <p className="text-white font-bold text-3xl">{error}</p>
+        ) : data && favorite.length === 0 ? (
+          <p className="text-white font-semibold text-lg sm:text-xl">There isnt a restaurant you like yet...</p>
         ) : (
-          data &&
           data.restaurants
             .filter((restaurant) => {
               for (const item of favorite) {
