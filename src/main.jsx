@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/layouts/Layout";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
+import FavoritePage from "./pages/FavoritePage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/detail/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "/favorite",
+        element: <FavoritePage />,
       },
     ],
   },
