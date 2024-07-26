@@ -6,28 +6,32 @@ import CategoryLabel from "../../elements/CategoryLabel";
 import Comment from "../../elements/Comment";
 import CommentDialog from "../../elements/CommentDialog";
 import { useParams } from "react-router-dom";
+import LikeButton from "../../elements/LikeButton";
 
 const RestaurantDetail = ({ data, skeleton, onCommentAdded }) => {
   const { id } = useParams();
 
   return (
     <div>
-      <div>
-        <h1 className="text-white font-bold text-2xl">
-          {skeleton ? <Skeleton width={150} /> : data.restaurant.name}
-        </h1>
-        <p className="text-gray-400 -mt-1">
-          {skeleton ? <Skeleton width={75} /> : data.restaurant.city}
-        </p>
-        {skeleton ? (
-          <Skeleton width={100} className="h-5" />
-        ) : (
-          <Rating
-            className="max-w-28"
-            value={data.restaurant.rating}
-            readOnly
-          />
-        )}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-white font-bold text-2xl">
+            {skeleton ? <Skeleton width={150} /> : data.restaurant.name}
+          </h1>
+          <p className="text-gray-400 -mt-1">
+            {skeleton ? <Skeleton width={75} /> : data.restaurant.city}
+          </p>
+          {skeleton ? (
+            <Skeleton width={100} className="h-5" />
+          ) : (
+            <Rating
+              className="max-w-28"
+              value={data.restaurant.rating}
+              readOnly
+            />
+          )}
+        </div>
+        <LikeButton id={id} />
       </div>
       <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 mt-5">
         {skeleton ? (
