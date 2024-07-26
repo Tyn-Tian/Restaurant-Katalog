@@ -31,7 +31,11 @@ const RestaurantDetail = ({ data, skeleton, onCommentAdded }) => {
             />
           )}
         </div>
-        <LikeButton id={id} />
+        {skeleton ? (
+          <Skeleton circle width={32} height={32} />
+        ) : (
+          <LikeButton id={id} />
+        )}
       </div>
       <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 mt-5">
         {skeleton ? (
