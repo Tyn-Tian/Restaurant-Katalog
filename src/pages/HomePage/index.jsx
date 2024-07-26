@@ -38,7 +38,7 @@ const HomePage = () => {
           "items-center",
           "justify-center sm:justify-between",
           "pb-3",
-          "sm:mt-3"
+          "mt-3"
         )}
       >
         <img
