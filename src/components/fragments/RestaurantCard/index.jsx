@@ -2,8 +2,12 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import LazyImage from "../../elements/LazyImage";
 import { cn } from "../../../utils/index";
+import { useNavigate } from "react-router-dom";
 
-const RestaurantCard = ({ restaurant, skeleton, clickHandle }) => {
+const RestaurantCard = ({ restaurant, skeleton }) => {
+  const navigate = useNavigate();
+  const clickHandler = (id) => navigate(`/detail/${id}`);
+
   return (
     <div
       className={cn(
@@ -13,7 +17,7 @@ const RestaurantCard = ({ restaurant, skeleton, clickHandle }) => {
         "border border-slate-800",
         "cursor-pointer"
       )}
-      onClick={clickHandle}
+      onClick={() => clickHandler(restaurant.id)}
     >
       {skeleton ? (
         <Skeleton className="h-28 sm:h-36 md:h-44" />

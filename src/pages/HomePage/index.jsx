@@ -5,7 +5,6 @@ import apiService from "../../services/api.service";
 import sortUtils from "../../utils/sortRestaurant";
 import RestaurantCard from "../../components/fragments/RestaurantCard";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { useNavigate } from "react-router-dom";
 import BackTopButton from "../../components/elements/BackTopButton";
 
 const sortList = ["Rating", "City", "Name"];
@@ -14,7 +13,6 @@ const HomePage = () => {
   const { data, isLoading, error } = useFetch(apiService.getAll);
   const [sort, setSort] = useState("sortByRating");
   const [active, setActive] = useState("Rating");
-  const navigate = useNavigate();
 
   const sortListHandle = (name) => {
     if (name === "Rating") {
@@ -26,8 +24,6 @@ const HomePage = () => {
     }
     setActive(name);
   };
-
-  const cardClickHandle = (id) => navigate(`/detail/${id}`);
 
   return (
     <main className="p-3 mb-20 sm:ml-20 sm:mb-0">
@@ -86,11 +82,7 @@ const HomePage = () => {
         ) : (
           data &&
           sortUtils[sort](data.restaurants).map((restaurant) => (
-            <RestaurantCard
-              restaurant={restaurant}
-              key={restaurant.id}
-              clickHandle={() => cardClickHandle(restaurant.id)}
-            />
+            <RestaurantCard restaurant={restaurant} key={restaurant.id} />
           ))
         )}
       </div>

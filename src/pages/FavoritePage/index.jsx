@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -8,10 +7,7 @@ import BackTopButton from "../../components/elements/BackTopButton";
 
 const FavoritePage = () => {
   const { data, isLoading, error } = useFetch(apiService.getAll);
-  const navigate = useNavigate();
   const favorite = loadDataFromStorage();
-
-  const cardClickHandle = (id) => navigate(`/detail/${id}`);
 
   return (
     <main className="p-3 mb-20 sm:ml-20 sm:mb-0">
@@ -42,11 +38,7 @@ const FavoritePage = () => {
               }
             })
             .map((restaurant) => (
-              <RestaurantCard
-                restaurant={restaurant}
-                key={restaurant.id}
-                clickHandle={() => cardClickHandle(restaurant.id)}
-              />
+              <RestaurantCard restaurant={restaurant} key={restaurant.id} />
             ))
         )}
       </div>
