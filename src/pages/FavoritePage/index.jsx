@@ -4,8 +4,16 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import RestaurantCard from "../../components/fragments/RestaurantCard";
 import { loadDataFromStorage } from "../../utils/storage";
 import BackTopButton from "../../components/elements/BackTopButton";
+import { useContext, useEffect } from "react";
+import { ActiveSidebar } from "../../context/ActiveSidebar";
 
 const FavoritePage = () => {
+  const { setActiveSidebar } = useContext(ActiveSidebar);
+
+  useEffect(() => {
+    setActiveSidebar("favorite");
+  });
+
   const { data, isLoading, error } = useFetch(apiService.getAll);
   const favorite = loadDataFromStorage();
 
@@ -28,7 +36,9 @@ const FavoritePage = () => {
         ) : error ? (
           <p className="text-white font-bold text-3xl">{error}</p>
         ) : data && favorite.length === 0 ? (
-          <p className="text-white font-semibold text-lg sm:text-xl">There isnt a restaurant you like yet...</p>
+          <p className="text-white font-semibold text-lg sm:text-xl">
+            There isnt a restaurant you like yet...
+          </p>
         ) : (
           data.restaurants
             .filter((restaurant) => {

@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FiGithub } from "react-icons/fi";
 import { GoHome } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { cn } from "../../../utils";
 import { GrLinkedinOption } from "react-icons/gr";
+import { ActiveSidebar } from "../../../context/ActiveSidebar";
 
 const Sidebar = () => {
-  const [active, setActive] = useState("home");
+  const { activeSidebar, setActiveSidebar } = useContext(ActiveSidebar);
 
   const navItems = [
     { id: "home", icon: <GoHome size="24" />, to: "/", href: false },
@@ -68,11 +69,11 @@ const Sidebar = () => {
           <li
             key={item.id}
             className={`p-4 rounded-lg transition duration-300 ${
-              active === item.id
+              activeSidebar === item.id
                 ? "bg-red-400 shadow-lg text-white"
                 : "bg-slate-900 text-gray-400 hover:bg-red-400 hover:text-white hover:shadow-lg"
             }`}
-            onClick={() => setActive(item.id)}
+            onClick={() => setActiveSidebar(item.id)}
           >
             {item.href ? (
               <a href={item.to} target="_blank">

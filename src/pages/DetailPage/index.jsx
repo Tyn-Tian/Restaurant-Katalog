@@ -3,15 +3,21 @@ import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
 import RestaurantDetail from "../../components/fragments/RestaurantDetail";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import BackTopButton from "../../components/elements/BackTopButton";
+import { ActiveSidebar } from "../../context/ActiveSidebar";
 
 const DetailPage = () => {
+  const { setActiveSidebar } = useContext(ActiveSidebar);
   const { id } = useParams();
   const navigate = useNavigate();
   const api = useCallback(() => apiService.get(id), [id]);
   const { data, isLoading, error, refetch } = useFetch(api);
   const [commentsUpdated, setCommentsUpdated] = useState(false);
+
+  useEffect(() => {
+    setActiveSidebar("");
+  });
 
   useEffect(() => {
     if (commentsUpdated) {

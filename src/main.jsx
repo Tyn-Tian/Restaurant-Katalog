@@ -6,6 +6,7 @@ import Layout from "./components/layouts/Layout";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import FavoritePage from "./pages/FavoritePage";
+import ActiveSidebarContextProvider from "./context/ActiveSidebar";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ActiveSidebarContextProvider>
+      <RouterProvider router={router} />
+    </ActiveSidebarContextProvider>
   </React.StrictMode>
 );

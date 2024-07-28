@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { cn } from "../../utils";
 import useFetch from "../../hooks/useFetch";
 import apiService from "../../services/api.service";
@@ -6,6 +6,7 @@ import sortUtils from "../../utils/sortRestaurant";
 import RestaurantCard from "../../components/fragments/RestaurantCard";
 import { SkeletonTheme } from "react-loading-skeleton";
 import BackTopButton from "../../components/elements/BackTopButton";
+import { ActiveSidebar } from "../../context/ActiveSidebar";
 
 const sortList = ["Rating", "City", "Name"];
 
@@ -13,6 +14,11 @@ const HomePage = () => {
   const { data, isLoading, error } = useFetch(apiService.getAll);
   const [sort, setSort] = useState("sortByRating");
   const [active, setActive] = useState("Rating");
+  const { setActiveSidebar } = useContext(ActiveSidebar);
+
+  useEffect(() => {
+    setActiveSidebar("home");
+  });
 
   const sortListHandle = (name) => {
     if (name === "Rating") {
