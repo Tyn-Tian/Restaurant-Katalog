@@ -4,17 +4,30 @@ import { FiGithub } from "react-icons/fi";
 import { GoHome } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { cn } from "../../../utils";
+import { GrLinkedinOption } from "react-icons/gr";
 
 const Sidebar = () => {
   const [active, setActive] = useState("home");
 
   const navItems = [
-    { id: "home", icon: <GoHome size="24" />, to: "/" },
-    { id: "favorite", icon: <MdFavoriteBorder size="24" />, to: "/favorite" },
+    { id: "home", icon: <GoHome size="24" />, to: "/", href: false },
+    {
+      id: "favorite",
+      icon: <MdFavoriteBorder size="24" />,
+      to: "/favorite",
+      href: false,
+    },
     {
       id: "github",
       icon: <FiGithub size="24" />,
       to: "https://github.com/Tyn-Tian",
+      href: true,
+    },
+    {
+      id: "linkedin",
+      icon: <GrLinkedinOption size="24" />,
+      to: "https://www.linkedin.com/in/christian72/",
+      href: true,
     },
   ];
 
@@ -61,7 +74,7 @@ const Sidebar = () => {
             }`}
             onClick={() => setActive(item.id)}
           >
-            {item.id === "github" ? (
+            {item.href ? (
               <a href={item.to} target="_blank">
                 {item.icon}
               </a>
