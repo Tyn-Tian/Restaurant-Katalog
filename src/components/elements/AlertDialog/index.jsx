@@ -28,6 +28,7 @@ const AlertDialog = ({ text }) => {
             "text-red-400 font-bold group-hover:text-white",
             "transition-all duration-500"
           )}
+          to="/"
         >
           Back to Home
         </Link>
