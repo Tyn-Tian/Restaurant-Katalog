@@ -7,6 +7,7 @@ import RestaurantCard from "../../components/fragments/RestaurantCard";
 import { SkeletonTheme } from "react-loading-skeleton";
 import BackTopButton from "../../components/elements/BackTopButton";
 import { ActiveSidebar } from "../../context/ActiveSidebar";
+import AlertDialog from "../../components/elements/AlertDialog";
 
 const sortList = ["Rating", "City", "Name"];
 
@@ -74,7 +75,7 @@ const HomePage = () => {
           </li>
         ))}
       </ul>
-      <div className="grid grid-cols-1  xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1 relative xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
         {isLoading ? (
           <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
             {Array(8)
@@ -84,7 +85,7 @@ const HomePage = () => {
               ))}
           </SkeletonTheme>
         ) : error ? (
-          <p className="text-white font-bold text-3xl">{error}</p>
+          <AlertDialog text={error} />
         ) : (
           data &&
           sortUtils[sort](data.restaurants).map((restaurant) => (

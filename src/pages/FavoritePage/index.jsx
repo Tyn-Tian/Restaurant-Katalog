@@ -6,6 +6,7 @@ import { loadDataFromStorage } from "../../utils/storage";
 import BackTopButton from "../../components/elements/BackTopButton";
 import { useContext, useEffect } from "react";
 import { ActiveSidebar } from "../../context/ActiveSidebar";
+import AlertDialog from "../../components/elements/AlertDialog";
 
 const FavoritePage = () => {
   const { setActiveSidebar } = useContext(ActiveSidebar);
@@ -24,7 +25,7 @@ const FavoritePage = () => {
           Your Favorite Restaurant
         </h1>
       </div>
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 mt-5 relative">
         {isLoading ? (
           <SkeletonTheme baseColor="#0f172a" highlightColor="#475569">
             {Array(8)
@@ -36,9 +37,7 @@ const FavoritePage = () => {
         ) : error ? (
           <p className="text-white font-bold text-3xl">{error}</p>
         ) : data && favorite.length === 0 ? (
-          <p className="text-white font-semibold text-lg sm:text-xl">
-            There isnt a restaurant you like yet...
-          </p>
+          <AlertDialog text="There isnt a restaurant you like yet..." />
         ) : (
           data.restaurants
             .filter((restaurant) => {

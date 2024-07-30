@@ -6,6 +6,7 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import { useCallback, useContext, useEffect, useState } from "react";
 import BackTopButton from "../../components/elements/BackTopButton";
 import { ActiveSidebar } from "../../context/ActiveSidebar";
+import AlertDialog from "../../components/elements/AlertDialog";
 
 const DetailPage = () => {
   const { setActiveSidebar } = useContext(ActiveSidebar);
@@ -37,7 +38,7 @@ const DetailPage = () => {
           <RestaurantDetail skeleton={isLoading} />
         </SkeletonTheme>
       ) : error ? (
-        <p className="text-center text-white text-3xl">Error...</p>
+        <AlertDialog text={error} />
       ) : data ? (
         <RestaurantDetail data={data} onCommentAdded={handleCommentAdded} />
       ) : (
