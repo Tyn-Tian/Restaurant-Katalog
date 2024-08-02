@@ -15,23 +15,13 @@ const LikeButton = ({ id }) => {
   };
 
   return (
-    <>
+    <button onClick={likeHandler} className="sm:mr-2 md:mr-3 lg:mr-5">
       {like ? (
-        <FaHeart
-          color="red"
-          size={32}
-          className="sm:mr-2 md:mr-3 lg:mr-5 cursor-pointer"
-          onClick={likeHandler}
-        />
+        <FaHeart color="red" size={32} />
       ) : (
-        <FaRegHeart
-          color="white"
-          size={32}
-          className="sm:mr-2 md:mr-3 lg:mr-5 cursor-pointer"
-          onClick={likeHandler}
-        />
+        <FaRegHeart color="white" size={32} />
       )}
-    </>
+    </button>
   );
 };
 
