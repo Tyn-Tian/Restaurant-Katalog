@@ -3,7 +3,7 @@ import { useContext } from "react";
 import ActiveSidebarContextProvider, {
   ActiveSidebar,
 } from "../../context/ActiveSidebar";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 const TestComponent = () => {
   const { activeSidebar, setActiveSidebar } = useContext(ActiveSidebar);
@@ -24,7 +24,7 @@ describe("ActiveSidebar context", () => {
     );
 
     expect(screen.getByTestId("active-sidebar")).toHaveTextContent("home");
-    screen.getByText("Change Sidebar").click();
+    fireEvent.click(screen.getByText("Change Sidebar"));
     expect(screen.getByTestId("active-sidebar")).toHaveTextContent("about");
   });
 });
